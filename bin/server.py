@@ -19,6 +19,8 @@ config.read('../etc/server.conf')
 stats = config['global'].getboolean('stats')
 stats_pubsub = config['global'].getboolean('stats_pubsub')
 stats_public = config['global'].getboolean('stats_public')
+redis_host=config['redis'].get('host', '127.0.0.1')
+redis_port=config['redis'].get('port', '6666')
 score = 1
 session = config['session'].getboolean('enable')
 session_ttl = config['session'].get('ttl')
@@ -35,7 +37,7 @@ api = Api(
     ordered=True,
 )
 
-rdb = redis.Redis(host='127.0.0.1', port='6666', decode_responses=True)
+rdb = redis.Redis(host=redis_host, port=redis_port, decode_responses=True)
 
 
 def is_hex(s):

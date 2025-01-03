@@ -5,3 +5,6 @@ stats_public = yes
 [session]
 enable = yes
 ttl = 86400
+[redis]
+host=127.0.0.1
+port=6666
